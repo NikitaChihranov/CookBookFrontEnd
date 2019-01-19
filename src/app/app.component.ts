@@ -26,20 +26,20 @@ export class AppComponent implements OnInit {
   }
   create(form) {
     this.recipeService.create(form.value).subscribe((res) => {
-      this.recipeService.uploadPhoto(this.photosToUpload, res).subscribe();
+      this.recipeService.uploadPhoto(this.photosToUpload, res).subscribe(() => {});
     });
   }
   update(form) {
     this.recipe = {...this.recipe, ...form.value};
     this.recipeService.updateRecipe(this.recipe.name, this.recipe).subscribe((res) => {
-      this.recipeService.updatePhoto(this.photosToUpdate, res).subscribe();
+      this.recipeService.updatePhoto(this.photosToUpdate, res).subscribe(() => {});
     });
   }
   delete(form) {
     this.recipeService.deleteRecipe(form.value).subscribe((res) => this.deletedRecipe = res);
   }
   deleteAllRecipes() {
-    this.recipeService.deleteAllRecipes();
+    this.recipeService.deleteAllRecipes().subscribe(() => {});
   }
   fileUploadEvent(event: any) {
     this.photosToUpload = (<any>event.target).files;

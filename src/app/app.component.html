@@ -1,6 +1,7 @@
 <h1>Cook book</h1>
 <h2>Recipes</h2>
 <button (click)="findAll()">Get all recipes</button>
+<br>
 <div *ngIf="recipes!==[]">
   <ul *ngFor="let recipe of recipes">
     <li>Id: {{recipe._id}}</li>
@@ -25,4 +26,18 @@
   Author: <input type="text" name="author" ngModel>
   <br>
   <button type="submit">Create</button>
+</form>
+<h4>Update recipes</h4>
+<form #updateForm="ngForm" (ngSubmit)="update(updateForm)" enctype="multipart/form-data">
+  Name: <input type="text" name="name" ngModel>
+  <br>
+  Ingredients: <input type="text" name="ingredients" ngModel>
+  <br>
+  Photo: <input type="file" name="photo" (change)="fileUpdateEvent($event)" ngModel>
+  <br>
+  Text: <input type="text" name="text" ngModel>
+  <br>
+  Author: <input type="text" name="author" ngModel>
+  <br>
+  <button type="submit">Update</button>
 </form>
