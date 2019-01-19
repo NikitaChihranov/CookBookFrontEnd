@@ -1,1 +1,28 @@
-<h1>Hello World</h1>
+<h1>Cook book</h1>
+<h2>Recipes</h2>
+<button (click)="findAll()">Get all recipes</button>
+<div *ngIf="recipes!==[]">
+  <ul *ngFor="let recipe of recipes">
+    <li>Id: {{recipe._id}}</li>
+    <li>Name: {{recipe.name}}</li>
+    <li>Ingredients: {{recipe.ingredients}}</li>
+    <li>Photo:</li>
+      <img [src]="'http://localhost:12000/photos/' + recipe.photo">
+    <li>Text: {{recipe.text}}</li>
+    <li>Author: {{recipe.author}}</li>
+    <li>Date of creation: {{recipe.dateOfCreation}}</li>
+  </ul>
+</div>
+<form #form="ngForm" (ngSubmit)="create(form)" enctype="multipart/form-data">
+  Name: <input type="text" name="name" ngModel>
+  <br>
+  Ingredients: <input type="text" name="ingredients" ngModel>
+  <br>
+  Photo: <input type="file" name="photo" (change)="fileUploadEvent($event)" ngModel>
+  <br>
+  Text: <input type="text" name="text" ngModel>
+  <br>
+  Author: <input type="text" name="author" ngModel>
+  <br>
+  <button type="submit">Create</button>
+</form>

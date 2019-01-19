@@ -8,7 +8,7 @@ import {Recipe} from './models/Recipe';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  recipes: Recipe[];
+  recipes: Recipe[] = [];
   recipeFoundByName: Recipe;
   recipe: Recipe;
   photosToUpload: File[];
