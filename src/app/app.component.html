@@ -2,6 +2,9 @@
 <h2>Recipes</h2>
 <button (click)="findAll()">Get all recipes</button>
 <br>
+<div *ngIf="norecipes==1">
+  <h4>No recipes were found</h4>
+</div>
 <div *ngIf="recipes!==[]">
   <ul *ngFor="let recipe of recipes">
     <li>Id: {{recipe._id}}</li>
@@ -12,6 +15,22 @@
     <li>Text: {{recipe.text}}</li>
     <li>Author: {{recipe.author}}</li>
     <li>Date of creation: {{recipe.dateOfCreation}}</li>
+    <button routerLink="viewAllVersions" (click)="viewAllVersions(recipe._id)">View all versions</button>
+  </ul>
+
+</div>
+<h4>Find recipe by name</h4>
+<input type="text" #name><br>
+<button (click)="findByName(name)">Find</button>
+<div *ngIf="recipeFoundByName">
+  <ul>
+    <li>Name: {{recipeFoundByName.name}}</li>
+    <li>Ingredients: {{recipeFoundByName.ingredients}}</li>
+    <li>Photo:<img [src]="'http://localhost:12000/photos/' + recipeFoundByName.photo"></li>
+    <li>Text: {{recipeFoundByName.text}}</li>
+    <li>Author: {{recipeFoundByName.author}}</li>
+    <li>Date of creation: {{recipeFoundByName.dateOfCreation}}</li>
+    <a routerLink="/viewAllVersions" (click)="viewAllVersions(recipeFoundByName._id)">View all versions</a>
   </ul>
 </div>
 <form #form="ngForm" (ngSubmit)="create(form)" enctype="multipart/form-data">
@@ -29,26 +48,40 @@
 </form>
 <h4>Update recipes</h4>
 <form #updateForm="ngForm" (ngSubmit)="update(updateForm)" enctype="multipart/form-data">
-  Name: <input type="text" name="name" ngModel>
-  <br>
-  Ingredients: <input type="text" name="ingredients" ngModel>
-  <br>
-  Photo: <input type="file" name="photo" (change)="fileUpdateEvent($event)" ngModel>
-  <br>
-  Text: <input type="text" name="text" ngModel>
-  <br>
-  Author: <input type="text" name="author" ngModel>
-  <br>
+  Name: <input type="text" name="name" ngModel><br>
+  Ingredients: <input type="text" name="ingredients" ngModel><br>
+  Photo: <input type="file" name="photo" (change)="fileUpdateEvent($event)" ngModel><br>
+  Text: <input type="text" name="text" ngModel><br>
+  Author: <input type="text" name="author" ngModel><br>
   <button type="submit">Update</button>
 </form>
 <div *ngIf="updatedRecipe">
   <ul>
     <li>Name: {{updatedRecipe.name}}</li>
     <li>Ingredients: {{updatedRecipe.ingredients}}</li>
-    <li>Photo:<img [src]="'http://localhost:12000/photos/' + updatedRecipe.photo">
-    </li>
+    <li>Photo:<img [src]="'http://localhost:12000/photos/' + updatedRecipe.photo"></li>
     <li>Text: {{updatedRecipe.text}}</li>
     <li>Author: {{updatedRecipe.author}}</li>
     <li>Date of creation: {{updatedRecipe.dateOfCreation}}</li>
   </ul>
 </div>
+<h4>Delete recipe. Just enter the name of recipe, which you want to delete.</h4>
+<form>
+  <input type="text" #nameToDelete>
+  <button (click)="delete(nameToDelete)">Delete</button>
+</form>
+<div *ngIf="deletedRecipe">
+  <ul>
+    <li>Name: {{deletedRecipe.name}}</li>
+    <li>Ingredients: {{deletedRecipe.ingredients}}</li>
+    <li>Photo:<img [src]="'http://localhost:12000/photos/' + deletedRecipe.photo"></li>
+    <li>Text: {{deletedRecipe.text}}</li>
+    <li>Author: {{deletedRecipe.author}}</li>
+    <li>Date of creation: {{deletedRecipe.dateOfCreation}}</li>
+  </ul>
+</div>
+<h4>Delete all recipes</h4>
+<form (ngSubmit)="deleteAllRecipes()">
+  <button type="submit">Delete</button>
+</form>
+
