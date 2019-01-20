@@ -8,7 +8,7 @@
     <li>Name: {{recipe.name}}</li>
     <li>Ingredients: {{recipe.ingredients}}</li>
     <li>Photo:</li>
-      <img [src]="'http://localhost:12000/photos/' + recipe.photo">
+      <img [src]="'http://localhost:12000/photos/' + recipe.photo" alt="No photo found">
     <li>Text: {{recipe.text}}</li>
     <li>Author: {{recipe.author}}</li>
     <li>Date of creation: {{recipe.dateOfCreation}}</li>
@@ -41,3 +41,14 @@
   <br>
   <button type="submit">Update</button>
 </form>
+<div *ngIf="updatedRecipe">
+  <ul>
+    <li>Name: {{updatedRecipe.name}}</li>
+    <li>Ingredients: {{updatedRecipe.ingredients}}</li>
+    <li>Photo:<img [src]="'http://localhost:12000/photos/' + updatedRecipe.photo">
+    </li>
+    <li>Text: {{updatedRecipe.text}}</li>
+    <li>Author: {{updatedRecipe.author}}</li>
+    <li>Date of creation: {{updatedRecipe.dateOfCreation}}</li>
+  </ul>
+</div>
