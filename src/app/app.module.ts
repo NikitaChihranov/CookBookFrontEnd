@@ -5,17 +5,19 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { VersionComponent } from './version/version.component';
 import {AppRoutingModule} from './app-routing.module';
+import { CookbookComponent } from './cookBook/cookbook.component';
 
 @NgModule({
   declarations: [
+    VersionComponent,
     AppComponent,
-    VersionComponent
+    CookbookComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

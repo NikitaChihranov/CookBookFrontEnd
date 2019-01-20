@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Recipe} from '../models/Recipe';
+import {RecipeService} from '../services/recipe.service';
 
 @Component({
   selector: 'app-version',
@@ -6,11 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./version.component.css']
 })
 export class VersionComponent implements OnInit {
-
-  constructor() { }
+  versions: Recipe[] = [];
+  constructor(private recipeService: RecipeService) {
+    this.recipeService.dataSource.subscribe((value => {
+      for (let recipe of value){
+        console.log(recipe.author);
+        this.versions.push(recipe);
+      }
+      }
+    ));
+  }
 
   ngOnInit() {
-    console.log(1122312);
+    console.log(this.versions);
   }
 
 }

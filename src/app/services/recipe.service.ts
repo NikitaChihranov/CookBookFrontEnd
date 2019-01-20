@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Recipe} from '../models/Recipe';
 import {AllRecipes} from '../models/AllRecipes';
 import {All} from 'tslint/lib/rules/completedDocsRule';
@@ -12,7 +12,7 @@ export class RecipeService {
 
   constructor(private http: HttpClient) {
   }
-
+  dataSource = new BehaviorSubject<Recipe[]>([]);
   private host = 'http://localhost:12000/';
 
   findAll(): Observable<Recipe[]> {
