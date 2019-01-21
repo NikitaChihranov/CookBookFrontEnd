@@ -1,6 +1,6 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-<nav class="navbar navbar-expand-lg navbar-light bg-success">
+<nav class="navbar navbar-expand-lg navbar-light bg-success ">
   <h1 class="text-white">Cookbook</h1>
 </nav>
 <br>
@@ -8,46 +8,47 @@
   <div class="row">
     <div class="col">
         <h2>Get all recipes</h2>
-        <button button type="button" class="btn btn-secondary" (click)="findAll()">Get all recipes</button>
+        <button type="button" class="btn btn-raised btn-success" (click)="findAll()">Push</button>
         <br>
         <div *ngIf="norecipes==1">
           <h4>No recipes were found</h4>
         </div>
-    </div>
       <div *ngIf="recipes!==[]">
-        <ul *ngFor="let recipe of recipes" class="list-group bmd-list-group-sm">
-          <a class="list-group-item">
-            <div  class="bmd-list-group-col">
-              <p class="list-group-item-heading">Id:</p>
-              <p class="list-group-item-text">{{recipe._id}}</p>
-            </div>
-          </a>
-          <li class="list-group-item">Name: {{recipe.name}}</li>
-          <li class="list-group-item">Ingredients: {{recipe.ingredients}}</li>
-          <li class="list-group-item">Photo:</li>
-          <img [src]="'http://localhost:12000/photos/' + recipe.photo" alt="No photo found" class="img-thumbnail">
-          <li class="list-group-item">Text: {{recipe.text}}</li>
-          <li class="list-group-item">Author: {{recipe.author}}</li>
-          <li class="list-group-item">Date of creation: {{recipe.dateOfCreation|date}}</li>
-          <button routerLink="viewAllVersions"  class="btn btn-secondary"  (click)="viewAllVersions(recipe._id)">View all versions</button>
-        </ul>
-      </div>
+        <div *ngFor="let recipe of recipes" class="card ml-5  mt-3 d-inline-block" style="width: 18rem; border: 1.5px solid #ccc">
+          <img class="card-img-top" style="height: 150px" [src]="'http://localhost:12000/photos/' + recipe.photo" alt="No photo exist">
+          <div class="card-body">
+            <h5 class="card-title">{{recipe.name}}</h5>
+            <span class="card-text font-weight-bold">Ingredients:</span>
+            <p class="card-text">{{recipe.ingredients}}</p>
+            <p class="card-text">{{recipe.text}}</p>
+            <a routerLink="viewAllVersions" class="btn btn-raised btn-success"  (click)="viewAllVersions(recipe._id)">View all versions</a>
+          </div>
+        </div>
     </div>
+    </div>
+  </div>
   <hr>
   <div class="row">
     <div class="col">
       <h4>Find recipe by name</h4>
-      <input type="text" #name placeholder="name"><br>
-      <button   class="btn btn-secondary w-10"  (click)="findByName(name)">Find</button>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text mr-1"  id="basic-addon1">Name</span>
+        </div>
+        <input type="text" #name class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+        <button  class="btn btn-secondary ml-3 "  (click)="findByName(name)">Find</button>
+      </div>
+
       <div *ngIf="recipeFoundByName">
-        <ul>
-          <li>Name: {{recipeFoundByName.name}}</li>
-          <li>Ingredients: {{recipeFoundByName.ingredients}}</li>
-          <li>Photo:<img [src]="'http://localhost:12000/photos/' + recipeFoundByName.photo"></li>
-          <li>Text: {{recipeFoundByName.text}}</li>
-          <li>Author: {{recipeFoundByName.author}}</li>
-          <li>Date of creation: {{recipeFoundByName.dateOfCreation|date}}</li>
-          <a routerLink="/viewAllVersions" (click)="viewAllVersions(recipeFoundByName._id)">View all versions</a>
+        <ul  class="list-group list-group-flush">
+          <li class="list-group-item"><b>Name:</b> {{recipeFoundByName.name}}</li>
+          <li class="list-group-item"><b>Ingredients:</b> {{recipeFoundByName.ingredients}}</li>
+          <li class="list-group-item"><b>Photo:</b></li>
+            <img class="img-fluid max-width:100%" [src]="'http://localhost:12000/photos/' + recipeFoundByName.photo">
+          <li class="list-group-item"><b>Text:</b> {{recipeFoundByName.text}}</li>
+          <li class="list-group-item"><b>Author: </b>{{recipeFoundByName.author}}</li>
+          <li class="list-group-item"><b>Date of creation: </b>{{recipeFoundByName.dateOfCreation|date}}</li>
+          <a routerLink="/viewAllVersions" class="btn btn-raised btn-success" (click)="viewAllVersions(recipeFoundByName._id)">View all versions</a>
         </ul>
       </div>
     </div>
