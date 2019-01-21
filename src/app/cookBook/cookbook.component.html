@@ -1,69 +1,96 @@
-<h2>Recipes</h2>
-<button (click)="findAll()">Get all recipes</button>
-<br>
-<div *ngIf="norecipes==1">
-  <h4>No recipes were found</h4>
-</div>
-<div *ngIf="recipes!==[]">
-  <ul *ngFor="let recipe of recipes">
-    <li>Id: {{recipe._id}}</li>
-    <li>Name: {{recipe.name}}</li>
-    <li>Ingredients: {{recipe.ingredients}}</li>
-    <li>Photo:</li>
-    <img [src]="'http://localhost:12000/photos/' + recipe.photo" alt="No photo found">
-    <li>Text: {{recipe.text}}</li>
-    <li>Author: {{recipe.author}}</li>
-    <li>Date of creation: {{recipe.dateOfCreation}}</li>
-    <button routerLink="viewAllVersions" (click)="viewAllVersions(recipe._id)">View all versions</button>
-  </ul>
 
-</div>
-<h4>Find recipe by name</h4>
-<input type="text" #name><br>
-<button (click)="findByName(name)">Find</button>
-<div *ngIf="recipeFoundByName">
-  <ul>
-    <li>Name: {{recipeFoundByName.name}}</li>
-    <li>Ingredients: {{recipeFoundByName.ingredients}}</li>
-    <li>Photo:<img [src]="'http://localhost:12000/photos/' + recipeFoundByName.photo"></li>
-    <li>Text: {{recipeFoundByName.text}}</li>
-    <li>Author: {{recipeFoundByName.author}}</li>
-    <li>Date of creation: {{recipeFoundByName.dateOfCreation}}</li>
-    <a routerLink="/viewAllVersions" (click)="viewAllVersions(recipeFoundByName._id)">View all versions</a>
-  </ul>
-</div>
-<form #form="ngForm" (ngSubmit)="create(form)" enctype="multipart/form-data">
-  Name: <input type="text" name="name" ngModel>
-  <br>
-  Ingredients: <input type="text" name="ingredients" ngModel>
-  <br>
-  Photo: <input type="file" name="photo" (change)="fileUploadEvent($event)" ngModel>
-  <br>
-  Text: <input type="text" name="text" ngModel>
-  <br>
-  Author: <input type="text" name="author" ngModel>
-  <br>
-  <button type="submit">Create</button>
-</form>
-<h4>Update recipes</h4>
-<form #updateForm="ngForm" (ngSubmit)="update(updateForm)" enctype="multipart/form-data">
-  Name: <input type="text" name="name" ngModel><br>
-  Ingredients: <input type="text" name="ingredients" ngModel><br>
-  Photo: <input type="file" name="photo" (change)="fileUpdateEvent($event)" ngModel><br>
-  Text: <input type="text" name="text" ngModel><br>
-  Author: <input type="text" name="author" ngModel><br>
-  <button type="submit">Update</button>
-</form>
-<div *ngIf="updatedRecipe">
-  <ul>
-    <li>Name: {{updatedRecipe.name}}</li>
-    <li>Ingredients: {{updatedRecipe.ingredients}}</li>
-    <li>Photo:<img [src]="'http://localhost:12000/photos/' + updatedRecipe.photo"></li>
-    <li>Text: {{updatedRecipe.text}}</li>
-    <li>Author: {{updatedRecipe.author}}</li>
-    <li>Date of creation: {{updatedRecipe.dateOfCreation}}</li>
-  </ul>
-</div>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <h1 class="text-white">Cookbook</h1>
+</nav>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <h2>Get all recipes</h2>
+        <button button type="button" class="btn btn-secondary" (click)="findAll()">Get all recipes</button>
+        <br>
+        <div *ngIf="norecipes==1">
+          <h4>No recipes were found</h4>
+        </div>
+    </div>
+      <div *ngIf="recipes!==[]">
+        <ul *ngFor="let recipe of recipes" class="list-group bmd-list-group-sm">
+          <a class="list-group-item">
+            <div  class="bmd-list-group-col">
+              <p class="list-group-item-heading">Id:</p>
+              <p class="list-group-item-text">{{recipe._id}}</p>
+            </div>
+          </a>
+          <li class="list-group-item">Name: {{recipe.name}}</li>
+          <li class="list-group-item">Ingredients: {{recipe.ingredients}}</li>
+          <li class="list-group-item">Photo:</li>
+          <img [src]="'http://localhost:12000/photos/' + recipe.photo" alt="No photo found" class="img-thumbnail">
+          <li class="list-group-item">Text: {{recipe.text}}</li>
+          <li class="list-group-item">Author: {{recipe.author}}</li>
+          <li class="list-group-item">Date of creation: {{recipe.dateOfCreation|date}}</li>
+          <button routerLink="viewAllVersions"  class="btn btn-secondary"  (click)="viewAllVersions(recipe._id)">View all versions</button>
+        </ul>
+      </div>
+    </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <h4>Find recipe by name</h4>
+      <input type="text" #name placeholder="name"><br>
+      <button   class="btn btn-secondary w-10"  (click)="findByName(name)">Find</button>
+      <div *ngIf="recipeFoundByName">
+        <ul>
+          <li>Name: {{recipeFoundByName.name}}</li>
+          <li>Ingredients: {{recipeFoundByName.ingredients}}</li>
+          <li>Photo:<img [src]="'http://localhost:12000/photos/' + recipeFoundByName.photo"></li>
+          <li>Text: {{recipeFoundByName.text}}</li>
+          <li>Author: {{recipeFoundByName.author}}</li>
+          <li>Date of creation: {{recipeFoundByName.dateOfCreation|date}}</li>
+          <a routerLink="/viewAllVersions" (click)="viewAllVersions(recipeFoundByName._id)">View all versions</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <form #form="ngForm" (ngSubmit)="create(form)" enctype="multipart/form-data">
+        Name: <input type="text" name="name" ngModel>
+        <br>
+        Ingredients: <input type="text" name="ingredients" ngModel>
+        <br>
+        Photo: <input type="file" name="photo" (change)="fileUploadEvent($event)" ngModel>
+        <br>
+        Text: <input type="text" name="text" ngModel>
+        <br>
+        Author: <input type="text" name="author" ngModel>
+        <br>
+        <button type="submit">Create</button>
+      </form>
+    </div>
+  </div>
+  <hr>
+      <h4>Update recipes</h4>
+      <form #updateForm="ngForm" (ngSubmit)="update(updateForm)" enctype="multipart/form-data">
+        Name: <input type="text" name="name" ngModel><br>
+        Ingredients: <input type="text" name="ingredients" ngModel><br>
+        Photo: <input type="file" name="photo" (change)="fileUpdateEvent($event)" ngModel><br>
+        Text: <input type="text" name="text" ngModel><br>
+        Author: <input type="text" name="author" ngModel><br>
+        <button type="submit">Update</button>
+      </form>
+      <div *ngIf="updatedRecipe">
+        <ul>
+          <li>Name: {{updatedRecipe.name}}</li>
+          <li>Ingredients: {{updatedRecipe.ingredients}}</li>
+          <li>Photo:<img [src]="'http://localhost:12000/photos/' + updatedRecipe.photo"></li>
+          <li>Text: {{updatedRecipe.text}}</li>
+          <li>Author: {{updatedRecipe.author}}</li>
+          <li>Date of creation: {{updatedRecipe.dateOfCreation|date}}</li>
+        </ul>
+    </div>
+  </div>
 <h4>Delete recipe. Just enter the name of recipe, which you want to delete.</h4>
 <form>
   <input type="text" #nameToDelete>
@@ -76,7 +103,7 @@
     <li>Photo:<img [src]="'http://localhost:12000/photos/' + deletedRecipe.photo"></li>
     <li>Text: {{deletedRecipe.text}}</li>
     <li>Author: {{deletedRecipe.author}}</li>
-    <li>Date of creation: {{deletedRecipe.dateOfCreation}}</li>
+    <li>Date of creation: {{deletedRecipe.dateOfCreation|date}}</li>
   </ul>
 </div>
 <h4>Delete all recipes</h4>

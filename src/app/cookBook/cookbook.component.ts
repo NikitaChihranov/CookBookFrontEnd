@@ -37,6 +37,7 @@ export class CookbookComponent implements OnInit {
   }
   viewAllVersions(id) {
     this.recipeService.viewAllVersions(id).subscribe((res) =>{
+      console.log(res);
       this.recipeService.dataSource.next(res);
     });
   }
@@ -58,7 +59,9 @@ export class CookbookComponent implements OnInit {
     this.recipeService.deleteRecipe(form.value).subscribe((res) => this.deletedRecipe = res ? res : {});
   }
   deleteAllRecipes() {
-    this.recipeService.deleteAllRecipes().subscribe(() => {});
+    this.recipeService.deleteAllRecipes().subscribe(() => {
+      this.recipes = null;
+    });
   }
   fileUploadEvent(event: any) {
     this.photosToUpload = (<any>event.target).files;

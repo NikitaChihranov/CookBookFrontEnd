@@ -1,3 +1,13 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<h2>All versions of recipe</h2>
 <div *ngFor="let recipe of versions">
-    <li>{{recipe.author}}</li>
+  <ul>
+    <li>Name: {{recipe.name}}</li>
+    <li>Ingredients: {{recipe.ingredients}}</li>
+    <li>Photo: </li>
+    <img [src]="'http://localhost:12000/photos/' + recipe.photo">
+    <li>Text: {{recipe.text}}</li>
+    <li>Author: {{recipe.author}}</li>
+    <li>Date of creation: {{recipe.dateOfCreation|date}}</li>
+  </ul>
 </div>

@@ -6,6 +6,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { VersionComponent } from './version/version.component';
 import {AppRoutingModule} from './app-routing.module';
 import { CookbookComponent } from './cookBook/cookbook.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CookbookComponent } from './cookBook/cookbook.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    TooltipModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

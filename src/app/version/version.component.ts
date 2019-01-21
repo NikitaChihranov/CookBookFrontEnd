@@ -10,16 +10,18 @@ import {RecipeService} from '../services/recipe.service';
 export class VersionComponent implements OnInit {
   versions: Recipe[] = [];
   constructor(private recipeService: RecipeService) {
-    this.recipeService.dataSource.subscribe((value => {
-      for (let recipe of value){
+
+
+  }
+
+  ngOnInit() {this.recipeService.dataSource.subscribe((value => {
+      this.versions.splice(0, this.versions.length);
+      for (const recipe of value){
         console.log(recipe.author);
         this.versions.push(recipe);
       }
-      }
-    ));
-  }
-
-  ngOnInit() {
+    }
+  ));
     console.log(this.versions);
   }
 
