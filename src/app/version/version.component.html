@@ -1,13 +1,30 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-<h2>All versions of recipe</h2>
-<div *ngFor="let recipe of versions">
-  <ul>
-    <li>Name: {{recipe.name}}</li>
-    <li>Ingredients: {{recipe.ingredients}}</li>
-    <li>Photo: </li>
-    <img [src]="'http://localhost:12000/photos/' + recipe.photo">
-    <li>Text: {{recipe.text}}</li>
-    <li>Author: {{recipe.author}}</li>
-    <li>Date of creation: {{recipe.dateOfCreation|date}}</li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-success ">
+  <h1 class="text-white">Cookbook</h1>
+</nav>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <button  class="btn btn-raised btn-success mb-2" routerLink="/">Back</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2>All versions of recipe</h2>
+      <div *ngFor="let recipe of versions"  class="card ml-5  mt-3 mb-2 d-inline-block"  style="width: 25rem; border: 1.5px solid #ccc">
+        <img class="card-img-top"  [src]="'http://localhost:12000/photos/' + recipe.photo" alt="No photo exist">
+        <div class="card-body">
+          <h5 class="card-title">{{recipe.name}}</h5>
+          <span class="card-text font-weight-bold">Ingredients:</span>
+          <p class="card-text">{{recipe.ingredients}}</p>
+          <p class="card-text">{{recipe.text}}</p>
+          <span class="card-text font-weight-bold">Author:</span>
+          <p class="card-text">{{recipe.author}}</p>
+          <p class="card-text text-muted text-right">{{recipe.dateOfCreation|date:'medium'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

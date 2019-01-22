@@ -7,12 +7,24 @@ import { VersionComponent } from './version/version.component';
 import {AppRoutingModule} from './app-routing.module';
 import { CookbookComponent } from './cookBook/cookbook.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { GetAllComponent } from './cookBook/get-all/get-all.component';
+import { FindByTitleComponent } from './cookBook/find-by-title/find-by-title.component';
+import { CreateComponent } from './cookbook/create/create.component';
+import { UpdateComponent } from './cookBook/update/update.component';
+import { DeleteComponent } from './cookBook/delete/delete.component';
+import { DeleteAllComponent } from './cookBook/delete-all/delete-all.component';
 
 @NgModule({
   declarations: [
     VersionComponent,
     AppComponent,
-    CookbookComponent
+    CookbookComponent,
+    GetAllComponent,
+    FindByTitleComponent,
+    CreateComponent,
+    UpdateComponent,
+    DeleteComponent,
+    DeleteAllComponent
   ],
   imports: [
     BrowserModule,

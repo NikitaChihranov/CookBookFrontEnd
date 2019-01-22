@@ -1,0 +1,14 @@
+<h2>Create your own recipe!</h2>
+<form #form="ngForm" (ngSubmit)="create(form)" enctype="multipart/form-data">
+  <input class="form-control w-25 mb-2 " placeholder="Title" type="text" name="name" ngModel>
+  <input class="form-control w-25 mb-2" placeholder="Ingredients" type="text" name="ingredients" ngModel>
+  <div class="input-group mb-3">
+    <div class="custom-file">
+      <input type="file" name="photo" class="custom-file-input w-25  " id="inputGroupFile01" (change)="fileUploadEvent($event)" ngModel>
+      <label class="custom-file-label w-25 min-width:25% " for="inputGroupFile01">Upload photo</label>
+    </div>
+  </div>
+  <input class="form-control w-25 mb-2" placeholder="Text" type="text" name="text" ngModel>
+  <input class="form-control w-25 mb-2" placeholder="Author" type="text" name="author" ngModel>
+  <button class="btn btn-raised btn-success" type="submit">Create</button>
+</form>

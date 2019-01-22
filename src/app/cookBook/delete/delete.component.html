@@ -1,0 +1,22 @@
+<h4>Delete recipe. Just enter the name of recipe, which you want to delete.</h4>
+<form>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text mr-1"  id="basic-addon2">Title</span>
+    </div>
+    <input type="text" #nameToDelete class="form-control" aria-label="Username" aria-describedby="basic-addon2">
+    <button class="btn btn-raised btn-success"  (click)="delete(nameToDelete)">Delete</button>
+  </div>
+</form>
+<div *ngIf="deletedRecipe">
+  <div class="card ml-5  mt-3 d-inline-block" style="width: 18rem; border: 1.5px solid #ccc">
+    <img class="card-img-top" style="height: 150px" [src]="'http://localhost:12000/photos/' + deletedRecipe.photo" alt="No photo exist">
+    <div class="card-body">
+      <h5 class="card-title">{{deletedRecipe.name}}</h5>
+      <span class="card-text font-weight-bold">Ingredients:</span>
+      <p class="card-text">{{deletedRecipe.ingredients}}</p>
+      <p class="card-text">{{deletedRecipe.text}}</p>
+      <p class="card-text text-muted text-right">{{deletedRecipe.dateOfCreation|date:'medium'}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<h2>Get all recipes</h2>
+<button type="button" class="btn btn-raised btn-success" (click)="findAll()">Push</button>
+<div *ngIf="norecipes==1">
+  <h4>No recipes were found</h4>
+</div>
+<div *ngIf="recipes!==[]">
+  <div *ngFor="let recipe of recipes" class="card ml-5  mt-3 d-inline-block" style="width: 18rem; border: 1.5px solid #ccc">
+    <img class="card-img-top" style="height: 150px" [src]="'http://localhost:12000/photos/' + recipe.photo" alt="No photo exist">
+    <div class="card-body">
+      <h5 class="card-title">{{recipe.name}}</h5>
+      <span class="card-text font-weight-bold">Ingredients:</span>
+      <p class="card-text">{{recipe.ingredients}}</p>
+      <p class="card-text">{{recipe.text}}</p>
+      <p class="card-text text-muted text-right">{{recipe.dateOfCreation|date:'medium'}}</p>
+      <a routerLink="viewAllVersions" class="btn btn-raised btn-success"  (click)="viewAllVersions(recipe._id)">View all versions</a>
+    </div>
+  </div>
+</div>
