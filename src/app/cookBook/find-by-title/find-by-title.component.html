@@ -3,8 +3,8 @@
   <div class="input-group-prepend">
     <span class="input-group-text mr-1"  id="basic-addon1">Title</span>
   </div>
-  <input type="text" #name class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-  <button  class="btn btn-secondary ml-1"  (click)="findByName(name)">Find</button>
+  <input type="text" #name class="form-control" (input)="getValue(name)"  aria-label="Username" aria-describedby="basic-addon1">
+  <button  class="btn btn-secondary ml-1" [disabled]="inputValue==''" (click)="findByName(name)">Find</button>
 </div>
 <div *ngIf="recipeFoundByName">
   <div class="card ml-5  mt-3 d-inline-block" style="width: 18rem; border: 1.5px solid #ccc">

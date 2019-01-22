@@ -10,6 +10,7 @@ import {RecipeService} from '../../services/recipe.service';
 export class FindByTitleComponent implements OnInit {
   recipeFoundByName: Recipe;
   norecipes = 0;
+  inputValue = '';
   constructor(private recipeService: RecipeService) {
   }
 
@@ -18,13 +19,19 @@ export class FindByTitleComponent implements OnInit {
 
   findByName(name) {
     this.recipeService.findByName(name.value).subscribe((res) => {
-      if (res) {
+      if (res.text!=='err') {
         this.recipeFoundByName = res;
         this.norecipes = 1;
       } else {
+        this.recipeFoundByName = null;
         this.norecipes = 2;
       }
     });
+  }
+
+  getValue(form){
+    this.inputValue = form.value;
+    console.log(this.inputValue);
   }
 
   viewAllVersions(id) {
