@@ -14,15 +14,14 @@ export class VersionComponent implements OnInit {
 
   }
 
-  ngOnInit() {this.recipeService.dataSource.subscribe((value => {
+  ngOnInit() {
+      this.recipeService.dataSource.subscribe((value => {
       this.versions.splice(0, this.versions.length);
       for (const recipe of value){
-        console.log(recipe.author);
         this.versions.push(recipe);
       }
     }
   ));
-    console.log(this.versions);
   }
 
 }

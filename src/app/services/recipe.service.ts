@@ -48,6 +48,7 @@ export class RecipeService {
   deleteAllRecipes(): Observable<Recipe[]> {
     return this.http.delete<Recipe[]>(`${this.host}`);
   }
-
-
+  sortRecipes(valueToSort: string): Observable<Recipe[]>{
+    return this.http.get<Recipe[]>(`${this.host}sort/${valueToSort}`);
+  }
 }

@@ -1,9 +1,15 @@
-<h2>Get all recipes</h2>
-<button type="button" class="btn btn-raised btn-success" (click)="findAll()">Push</button>
 <div *ngIf="norecipes==1">
   <h4>No recipes were found</h4>
 </div>
-<div *ngIf="recipes!==[]">
+<div *ngIf="recipes.length > 0" class="float-right">
+  <select name="searchPanel" ngModel #select>
+    <option>By date: from last to the first</option>
+    <option>By date: from first to the last</option>
+    <option>By name: A - Z</option>
+    <option>By name: Z - A</option>
+  </select>
+  <button  class="btn btn-raised btn-success ml-2" (click)="sortRecipes(select)">Sort</button>
+</div>
   <div *ngFor="let recipe of recipes" class="card ml-5  mt-3 d-inline-flex" style="width: 18rem; border: 1.5px solid #ccc">
     <img class="card-img-top" style="height: 180px" [src]="'http://localhost:12000/photos/' + recipe.photo" alt="No photo exist">
     <div class="card-body ">
@@ -15,4 +21,3 @@
       <a routerLink="viewAllVersions" class="btn btn-raised btn-success"  (click)="viewAllVersions(recipe._id)">View all versions</a>
     </div>
   </div>
-</div>

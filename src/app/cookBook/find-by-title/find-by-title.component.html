@@ -1,24 +1,7 @@
-<h2>Find recipe by title</h2>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text mr-1"  id="basic-addon1">Title</span>
   </div>
   <input type="text" #name class="form-control" (input)="getValue(name)"  aria-label="Username" aria-describedby="basic-addon1">
-  <button  class="btn btn-secondary ml-1" [disabled]="inputValue==''" (click)="findByName(name)">Find</button>
-</div>
-<div *ngIf="recipeFoundByName">
-  <div class="card ml-5  mt-3 d-inline-flex" style="width: 18rem; border: 1.5px solid #ccc">
-    <img class="card-img-top" style="height: 150px" [src]="'http://localhost:12000/photos/' + recipeFoundByName.photo" alt="No photo exist">
-    <div class="card-body">
-      <h5 class="card-title">{{recipeFoundByName.name}}</h5>
-      <span class="card-text font-weight-bold">Ingredients:</span>
-      <p class="card-text">{{recipeFoundByName.ingredients}}</p>
-      <p class="card-text">{{recipeFoundByName.text}}</p>
-      <p class="card-text text-muted text-right">{{recipeFoundByName.dateOfCreation|date:'medium'}}</p>
-      <a routerLink="viewAllVersions" class="btn btn-raised btn-success"  (click)="viewAllVersions(recipeFoundByName._id)">View all versions</a>
-    </div>
-  </div>
-</div>
-<div *ngIf="norecipes == 2">
-  <h2>Nothing found</h2>
+  <button class="btn btn-secondary ml-1" [disabled]="inputValue==''" (click)="findByName(name)">Find</button>
 </div>
