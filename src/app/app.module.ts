@@ -15,6 +15,7 @@ import { DeleteComponent } from './cookBook/delete/delete.component';
 import { DeleteAllComponent } from './cookBook/delete-all/delete-all.component';
 import { FoundComponent } from './cookBook/found/found.component';
 import { CreateCComponent } from './cookBook/create-c/create-c.component';
+import { Update2Component } from './cookBook/update2/update2.component';
 @NgModule({
   declarations: [
     VersionComponent,
@@ -27,7 +28,8 @@ import { CreateCComponent } from './cookBook/create-c/create-c.component';
     DeleteComponent,
     DeleteAllComponent,
     FoundComponent,
-    CreateCComponent
+    CreateCComponent,
+    Update2Component
   ],
   imports: [
     BrowserModule,

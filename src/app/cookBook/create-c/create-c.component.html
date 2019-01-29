@@ -5,7 +5,7 @@
     </div>
   </div>
   <br>
-  <div class="row">
+  <div class="row text-center">
     <div class="col-md-5 offset-md-4">
       <form #form="ngForm" (ngSubmit)="create(form)" enctype="multipart/form-data">
         <input class="form-control  mb-2" placeholder="Title" type="text" name="name" ngModel>
@@ -13,7 +13,7 @@
         <div class="input-group mb-3">
           <div class="custom-file">
             <input type="file" name="photo" class="custom-file-input " id="inputGroupFile01" (change)="fileUploadEvent($event)" ngModel>
-            <label class="custom-file-label " for="inputGroupFile01">Upload photo</label>
+            <label class="custom-file-label text-left" for="inputGroupFile01">Upload photo</label>
           </div>
         </div>
         <input class="form-control  mb-2" placeholder="Text" type="text" name="text" ngModel>
