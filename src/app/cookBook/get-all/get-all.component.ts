@@ -35,19 +35,20 @@ export class GetAllComponent implements OnInit {
   }
 
   sortRecipes(form) {
-    let query = '';
-    if (form.value === 'By date: from last to the first') {
-      query = 's1';
-    }
-    if (form.value === 'By date: from first to the last') {
-      query = 's2';
-    }
-    if (form.value === 'By name: A - Z') {
-      query = 's3';
-    }
-    if (form.value === 'By name: Z - A') {
-      query = 's4';
-    }
+    let query = 's1';
+     if ( form.value.optradio === 's1') {
+       query = 's1';
+       form.value.optradio1 = null;
+     }
+     if (  form.value.optradio === 's2') {
+       query = 's2';
+     }
+     if (  form.value.optradio === 's3') {
+       query = 's3';
+     }
+     if ( form.value.optradio === 's4' ) {
+       query = 's4';
+     }
     this.recipeService.sortRecipes(query).subscribe((res) => {
       this.recipes = res;
     });

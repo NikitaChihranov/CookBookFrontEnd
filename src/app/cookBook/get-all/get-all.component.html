@@ -1,32 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <div *ngIf="recipes.length > 0" class="float-left">
+        <form #sortForm="ngForm" (change)="sortRecipes(sortForm)">
+          <label><input type="radio" name="optradio" value="s1" ngModel>By date: from last to the first</label><br>
+          <label><input type="radio" name="optradio" value="s2" ngModel>By date: from first to the last</label><br>
+          <label><input type="radio" name="optradio" value="s3" ngModel>By name: A - Z</label><br>
+          <label><input type="radio" name="optradio" value="s4" ngModel>By name: Z - A</label><br>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <div *ngIf="norecipes==1">
         <h4>No recipes were found</h4>
       </div>
     </div>
-    <div class="col">
-      <div *ngIf="recipes.length > 0" class="float-right">
-        <select name="searchPanel" ngModel #select>
-          <option>By date: from last to the first</option>
-          <option>By date: from first to the last</option>
-          <option>By name: A - Z</option>
-          <option>By name: Z - A</option>
-        </select>
-        <button  class="btn btn-raised btn-success ml-2" (click)="sortRecipes(select)">Sort</button>
-      </div>
-    </div>
   </div>
   <div class="row">
-    <div *ngFor="let recipe of recipes" class="card ml-5  mt-3 d-inline-flex" style="width: 18rem; border: 1.5px solid #ccc">
-      <img class="card-img-top" style="height: 180px" [src]="'http://localhost:12000/photos/' + recipe.photo" alt="No photo exist">
+    <div *ngFor="let recipe of recipes" class="card ml-5  mt-3 d-inline-flex"
+         style="width: 18rem; border: 1.5px solid #ccc">
+      <img class="card-img-top" style="height: 180px" [src]="'http://localhost:12000/photos/' + recipe.photo"
+           alt="No photo exist">
       <div class="card-body ">
         <h5 class="card-title">{{recipe.name}}</h5>
         <span class="card-text font-weight-bold">Ingredients:</span>
         <p class="card-text">{{recipe.ingredients}}</p>
         <p class="card-text">{{recipe.text}}</p>
         <p class="card-text text-muted text-right">{{recipe.dateOfCreation|date:'medium'}}</p>
-        <a routerLink="viewAllVersions" class="btn btn-raised btn-success"  (click)="viewAllVersions(recipe._id)">View all versions</a>
+        <a routerLink="viewAllVersions" class="btn btn-raised btn-success" (click)="viewAllVersions(recipe._id)">View
+          all versions</a>
       </div>
     </div>
   </div>
