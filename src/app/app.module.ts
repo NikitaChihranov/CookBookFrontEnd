@@ -12,10 +12,10 @@ import { FindByTitleComponent } from './cookBook/find-by-title/find-by-title.com
 import { CreateComponent } from './cookbook/create/create.component';
 import { UpdateComponent } from './cookBook/update/update.component';
 import { DeleteComponent } from './cookBook/delete/delete.component';
-import { DeleteAllComponent } from './cookBook/delete-all/delete-all.component';
 import { FoundComponent } from './cookBook/found/found.component';
 import { CreateCComponent } from './cookBook/create-c/create-c.component';
 import { Update2Component } from './cookBook/update2/update2.component';
+import { Delete2Component } from './cookBook/delete2/delete2.component';
 @NgModule({
   declarations: [
     VersionComponent,
@@ -26,10 +26,10 @@ import { Update2Component } from './cookBook/update2/update2.component';
     CreateComponent,
     UpdateComponent,
     DeleteComponent,
-    DeleteAllComponent,
     FoundComponent,
     CreateCComponent,
-    Update2Component
+    Update2Component,
+    Delete2Component
   ],
   imports: [
     BrowserModule,
