@@ -9,6 +9,7 @@ import {RecipeService} from '../../services/recipe.service';
 export class Delete2Component implements OnInit {
   deletedRecipe: {};
   norecipe = 0;
+  inputValue = '';
   constructor(private recipeService: RecipeService) {
   }
   ngOnInit() {
@@ -24,5 +25,8 @@ export class Delete2Component implements OnInit {
   }
   deleteAllRecipes(){
     this.recipeService.deleteAllRecipes().subscribe((res) => {});
+  }
+  getValue(form){
+    this.inputValue = form.value;
   }
 }
