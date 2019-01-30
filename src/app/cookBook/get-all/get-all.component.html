@@ -3,13 +3,24 @@
     <div class="col">
       <div *ngIf="recipes.length > 0" class="float-left">
         <form #sortForm="ngForm" (change)="sortRecipes(sortForm)">
-          <label><input type="radio" name="optradio" value="s1" ngModel>By date: from last to the first</label><br>
-          <label><input type="radio" name="optradio" value="s2" ngModel>By date: from first to the last</label><br>
-          <label><input type="radio" name="optradio" value="s3" ngModel>By name: A - Z</label><br>
-          <label><input type="radio" name="optradio" value="s4" ngModel>By name: Z - A</label><br>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultChecked1"  value="s1" name="optradio"  ngModel>
+            <label class="custom-control-label" for="defaultChecked1">By date: from last to the first</label></div>
+            <br>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input"id="defaultChecked2"  value="s2" name="optradio"  ngModel>
+            <label class="custom-control-label" for="defaultChecked2">By date: from first to the last</label></div>
+            <br>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input"  id="defaultChecked3" value="s3" name="optradio"  ngModel>
+            <label class="custom-control-label" for="defaultChecked3">By name: A - Z</label></div>
+            <br>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input"  id="defaultChecked4" value="s4" name="optradio" ngModel>
+            <label class="custom-control-label" for="defaultChecked4">By name: Z - A</label>
+          </div>
         </form>
       </div>
-
     </div>
   </div>
   <div class="row">
