@@ -32,9 +32,10 @@
         <p class="card-text">{{recipe.ingredients}}</p>
         <p class="card-text">{{recipe.text}}</p>
         <p class="card-text text-muted text-right">{{recipe.dateOfCreation|date:'medium'}}</p>
-        <a routerLink="viewAllVersions" class="btn btn-raised btn-success" (click)="viewAllVersions(recipe._id)">View
-          all versions</a>
+
       </div>
+      <a routerLink="viewAllVersions" class="ml-5 mr-5 mb-3 btn btn-raised btn-success" (click)="viewAllVersions(recipe._id)">View
+      all versions</a>
     </div>
   </div>
 </div>
