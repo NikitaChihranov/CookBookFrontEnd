@@ -26,7 +26,25 @@ export class GetAllComponent implements OnInit {
       });
   }
 
-
+  sortRecipes(form) {
+    let query = 's1';
+    if ( form.value.optradio === 's1') {
+      query = 's1';
+      form.value.optradio1 = null;
+    }
+    if (  form.value.optradio === 's2') {
+      query = 's2';
+    }
+    if (  form.value.optradio === 's3') {
+      query = 's3';
+    }
+    if ( form.value.optradio === 's4' ) {
+      query = 's4';
+    }
+    this.recipeService.sortRecipes(query).subscribe((res) => {
+      this.recipes = res;
+    });
+  }
 
   viewAllVersions(id) {
     this.recipeService.viewAllVersions(id).subscribe((res) => {
@@ -34,23 +52,5 @@ export class GetAllComponent implements OnInit {
     });
   }
 
-  sortRecipes(form) {
-    let query = 's1';
-     if ( form.value.optradio === 's1') {
-       query = 's1';
-       form.value.optradio1 = null;
-     }
-     if (  form.value.optradio === 's2') {
-       query = 's2';
-     }
-     if (  form.value.optradio === 's3') {
-       query = 's3';
-     }
-     if ( form.value.optradio === 's4' ) {
-       query = 's4';
-     }
-    this.recipeService.sortRecipes(query).subscribe((res) => {
-      this.recipes = res;
-    });
-  }
+
 }

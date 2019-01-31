@@ -9,7 +9,7 @@ import {RecipeService} from '../../services/recipe.service';
 })
 export class Update2Component implements OnInit {
   recipe: Recipe;
-  updatedRecipe: {};
+  updatedRecipe: Recipe;
   photosToUpdate: File[];
   constructor(private recipeService: RecipeService) {
   }

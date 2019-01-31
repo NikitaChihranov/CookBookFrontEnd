@@ -12,7 +12,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text mr-1" id="basic-addon2">Title</span>
           </div>
-          <input type="text" #nameToDelete class="form-control" aria-label="Username" aria-describedby="basic-addon2">
+          <input type="text" (input)="getValue(nameToDelete)" #nameToDelete class="form-control" aria-label="Username" aria-describedby="basic-addon2">
           <button class="btn btn-raised btn-success ml-2" [disabled]="inputValue==''"  (click)="delete(nameToDelete)">Delete</button>
         </div>
       </form>

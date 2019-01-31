@@ -1,37 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <div *ngIf="recipes.length > 0" class="float-left">
-        <form #sortForm="ngForm" (change)="sortRecipes(sortForm)">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultChecked1"  value="s1" name="optradio"  ngModel>
-            <label class="custom-control-label" for="defaultChecked1">By date: from last to the first</label></div>
-            <br>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input"id="defaultChecked2"  value="s2" name="optradio"  ngModel>
-            <label class="custom-control-label" for="defaultChecked2">By date: from first to the last</label></div>
-            <br>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input"  id="defaultChecked3" value="s3" name="optradio"  ngModel>
-            <label class="custom-control-label" for="defaultChecked3">By name: A - Z</label></div>
-            <br>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input"  id="defaultChecked4" value="s4" name="optradio" ngModel>
-            <label class="custom-control-label" for="defaultChecked4">By name: Z - A</label>
-          </div>
-        </form>
-      </div>
+    <div *ngIf="recipes.length > 0" class="float-left ml-3">
+      <form #sortForm="ngForm" (change)="sortRecipes(sortForm)">
+        <div class="custom-control custom-radio mb-1">
+          <input type="radio" class="custom-control-input " id="defaultChecked1" value="s1" name="optradio" ngModel>
+          <label class="custom-control-label " for="defaultChecked1">By date: from last to the first</label></div>
+        <div class="custom-control custom-radio mb-1">
+          <input type="radio" class="custom-control-input" id="defaultChecked2" value="s2" name="optradio" ngModel>
+          <label class="custom-control-label" for="defaultChecked2">By date: from first to the last</label></div>
+        <div class="custom-control custom-radio mb-1">
+          <input type="radio" class="custom-control-input" id="defaultChecked3" value="s3" name="optradio" ngModel>
+          <label class="custom-control-label" for="defaultChecked3">By name: A - Z</label></div>
+        <div class="custom-control custom-radio mb-1">
+          <input type="radio" class="custom-control-input" id="defaultChecked4" value="s4" name="optradio" ngModel>
+          <label class="custom-control-label" for="defaultChecked4">By name: Z - A</label>
+        </div>
+      </form>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <div *ngIf="norecipes==1">
-        <h4>No recipes were found</h4>
-      </div>
+    <div *ngIf="norecipes==1" class="col">
+      <h4>No recipes were found</h4>
     </div>
-  </div>
-  <div class="row">
-    <div *ngFor="let recipe of recipes" class="card ml-5  mt-3 d-inline-flex"
+    <div *ngFor="let recipe of recipes" class="card ml-5 mt-3 d-inline-flex"
          style="width: 18rem; border: 1.5px solid #ccc">
       <img class="card-img-top" style="height: 180px" [src]="'http://localhost:12000/photos/' + recipe.photo"
            alt="No photo exist">
@@ -47,5 +38,4 @@
     </div>
   </div>
 </div>
-
 

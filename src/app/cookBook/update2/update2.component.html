@@ -34,7 +34,7 @@
           <p class="card-text">{{updatedRecipe.ingredients}}</p>
           <p class="card-text">{{updatedRecipe.text}}</p>
           <p class="card-text text-muted text-right">{{updatedRecipe.dateOfCreation|date:'medium'}}</p>
-          <a routerLink="viewAllVersions" class="btn btn-raised btn-success"
+          <a routerLink="/viewAllVersions" class="btn btn-raised btn-success"
              (click)="viewAllVersions(updatedRecipe._id)">View all versions</a>
         </div>
       </div>

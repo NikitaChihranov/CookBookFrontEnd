@@ -29,7 +29,7 @@ import { Delete2Component } from './cookBook/delete2/delete2.component';
     FoundComponent,
     CreateCComponent,
     Update2Component,
-    Delete2Component
+    Delete2Component,
   ],
   imports: [
     BrowserModule,
