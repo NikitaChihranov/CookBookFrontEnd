@@ -15,9 +15,8 @@
           <p class="card-text">{{recipeFoundByName.ingredients}}</p>
           <p class="card-text">{{recipeFoundByName.text}}</p>
           <p class="card-text text-muted text-right">{{recipeFoundByName.dateOfCreation|date:'medium'}}</p>
-
         </div>
-        <a routerLink="/viewAllVersions" class="btn btn-raised btn-success"
+        <a routerLink="/viewAllVersions" class="ml-5 mr-5 mb-3 btn btn-raised btn-success"
            (click)="viewAllVersions(recipeFoundByName._id)">View all versions</a>
       </div>
     </div>
